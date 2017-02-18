@@ -11,17 +11,6 @@
  *  for the specific language governing permissions and limitations under the License.
  *
  */
- 
- /*
- *  Purpose: Arrival Sensor HA DTH File
- *
- *  Filename: Arrival-Sensor-HA.src/Arrival-Sensor-HA.groovy
- *
- *  Change History:
- *  1. 20160115 TW - Update/Edit to support i18n translations
- *  2. 20160121 TW - Update to V4 battery calcs, added pref's page title translations
- */
- 
 metadata {
     definition (name: "Arrival Sensor HA", namespace: "smartthings", author: "SmartThings") {
         capability "Tone"
@@ -70,7 +59,7 @@ def updated() {
 }
 
 def configure() {
-    def cmds = zigbee.configureReporting(0x0001, 0x0020, 0x20, 20, 20, 0x01)
+    def cmds = zigbee.batteryConfig(20, 20, 0x01)
     log.debug "configure -- cmds: ${cmds}"
     return cmds
 }
